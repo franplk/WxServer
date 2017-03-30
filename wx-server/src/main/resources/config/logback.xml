@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+	<property name="logPattern" value="" />
+	
+	<contextName>SpringFetureTest</contextName>
+
+	<!-- 日志appender -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${logPattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>testFile.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>${logPattern}</pattern>
+		</encoder>
+	</appender>  
+	
+	<!-- root -->
+	<!-- TRACE, DEBUG, INFO, WARN, ERROR, ALL, OFF -->
+	<root level="DEBUG">
+    	<appender-ref ref="console" />
+ 	</root>
+    
+	<!-- project default level -->
+	<logger name="cn.plk.server" level="DEBUG" />
+    
+</configuration>
