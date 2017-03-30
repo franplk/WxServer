@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- Web 认证规则 -->
+	<security:http security="none" pattern="/login.jsp" />
+	<security:http auto-config="true">
+		<!--自定义登录页面
+		<security:form-login login-page="/login.jsp" login-processing-url="/login.do"
+			username-parameter="username" password-parameter="password"
+			default-target-url="/pages/index.jsp" always-use-default-target="false" />
+		-->
+		<security:http-basic/>
+		<security:intercept-url pattern="/**" access="ROLE_USER" />
+	</security:http>
+
+	<!-- AuthenticationManager认证管理 -->
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="user" authorities="ROLE_USER" />
+				<security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<!-- 认证成功后的处理类 -->
+	<bean id="authSuccess" class="cn.plk.security.AuthSuccessManager"/>
+	<bean id="authFailure" class="cn.plk.security.AuthFailureManager"/>
+</beans>

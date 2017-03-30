@@ -1,0 +1,26 @@
+<!-- Spring事件监听，便于在Spring启动后做一些处理 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- ContextStartedEvent（容器启动后） -->
+	<bean id="contextStart" class="cn.plk.lisener.AppStartLisener"></bean>
+	
+	<!-- ContextRefreshedEvent（容器初始化或者刷新后） -->
+	<bean id="contextRefresh" class="cn.plk.lisener.AppRefreshLisener"></bean>
+	
+	<!-- ContextStoppedEvent（容器停止后） -->
+	<bean id="contextStop" class="cn.plk.lisener.AppStopLisener"></bean>
+	
+	<!-- ContextClosedEvent（容器关闭后） -->
+	<bean id="contextClosed" class="cn.plk.lisener.AppClosedLisener"></bean>
+	
+	<!-- RequestHandleEvent 当一个http请求结束触发该事件。 -->
+	<bean id="requestHand" class="cn.plk.lisener.RequestHandledLisener"></bean>
+	
+	<!-- 可以自定义事件 -->
+	<bean id="custom" class="cn.plk.lisener.CustomEventLisener"></bean>
+	
+ </beans>
