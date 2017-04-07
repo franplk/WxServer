@@ -10,6 +10,8 @@
 
 - wx-server 微信公众号提供服务模块
 
+- wx-util 工具类模块
+
 ## 运行
 ```
     mvn jetty:run
