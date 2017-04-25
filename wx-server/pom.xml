@@ -13,6 +13,10 @@
 	<description>wechat server for gongzhonghao</description>
 
 	<artifactId>wx-server</artifactId>
+	
+	<properties>
+		<jetty.plugin.version>9.4.0.v20161208</jetty.plugin.version>
+	</properties>
 
 	<dependencies>
 		<!-- Servlet API -->
